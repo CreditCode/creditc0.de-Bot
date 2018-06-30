@@ -50,6 +50,22 @@ async def disconnect(ctx):
 async def kys(ctx):
 	options=["¯\_(ತ益ತ)_/¯", "(ง  ᴥ  )ง", "¯\_(͡° ͜ʖ ͡°)_/¯"]
 	await client.say(choice(options))
+	
+@client.command(pass_context = True)
+async def ban(ctx, *, member : discord.Member = None):
+    if not ctx.message.author.server_permissions.administrator:
+        return
+ 
+    if not member:
+        return await client.say(ctx.message.author.mention + "Tell me a member!")
+    try:
+        await client.ban(member)
+    except Exception as e:
+        if 'Privilege is too low' in str(e):
+            return await client.say(":( Privilege too low!")
+ 
+    embed = discord.Embed(description = "**%s** has been banned!"%member.name, color = 0xFF0000)
+    return await client.say(embed = embed)
 	 
 
 
