@@ -82,4 +82,4 @@ async def clear(ctx, number):
     await client.delete_messages(mgs)
 
 
-client.run("INSERT CLIENT ID")
+client.run("123456789") # this isn't a real id
