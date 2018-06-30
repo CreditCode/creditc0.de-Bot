@@ -66,7 +66,20 @@ async def ban(ctx, *, member : discord.Member = None):
  
     embed = discord.Embed(description = "**%s** has been banned!"%member.name, color = 0xFF0000)
     return await client.say(embed = embed)
-	 
+@client.command(pass_context = True)
+async def getbans(ctx):
+    x = await client.get_bans(ctx.message.server)
+    x = '\n'.join([y.name for y in x])
+    embed = discord.Embed(title = "List of Banned Members", description = x, color = 0xFFFFF)
+    return await client.say(embed = embed)
+
+@client.command(pass_context=True)       
+async def clear(ctx, number):
+    mgs = []
+    number = int(number) 
+    async for x in client.logs_from(ctx.message.channel, limit = number):
+        mgs.append(x)
+    await client.delete_messages(mgs)
 
 
 client.run("INSERT CLIENT ID")
