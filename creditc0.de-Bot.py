@@ -15,9 +15,11 @@ client = commands.Bot(command_prefix=bot_prefix)
 
 @client.event
 async def on_ready():
-	print("Bot Online!")
+	print("Logged in as")
+	print(client.user.name)
+	print(client.user.id)
+	print('---------------------------------------')
 	print("Created by creditc0.de with 💙  and the \ndiscord.py API!")
-	print(grabRandom())
 	await client.change_presence(game=discord.Game(name='created by creditc0.de'))
 
 @client.command(pass_context=True)
