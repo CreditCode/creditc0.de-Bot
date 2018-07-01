@@ -24,13 +24,19 @@ async def on_ready():
 
 @client.command(pass_context=True)
 async def src(ctx):
-	await client.say("src.creditc0.de")
+    embed = discord.Embed(title = "Get the source here: \n http://github.com/CreditCode ", color = 0xFFFFF)
+    return await client.say(embed = embed)
 
 @client.command(pass_context=True)
 async def contact(ctx):
 	await client.say("Twitter: http://twitter.com/credit361")
 	await client.say("Instagram: http://Instagram.com/creditc0de")
 	await client.say("Website: http://creditc0.de")
+
+@client.command(pass_context=True)
+async def memes(ctx):
+    options2 = ["http://prntscr.com/k15ow5", "https://pbs.twimg.com/media/DgZW_pqVAAASG70.jpg", "https://pbs.twimg.com/media/DgkX82UV4AAKIZt.jpg:large", "http://prntscr.com/k16bnb"]
+    await client.say(choice(options2))
 	
 @client.command(pass_context=True) 
 async def connect(ctx):
@@ -40,19 +46,18 @@ async def connect(ctx):
 	voice_channel = author.voice_channel
 	vc = await client.join_voice_channel(voice_channel)
 
-#this isn't working atm, imma fix it later
 @client.command(pass_context=True)
 async def disconnect(ctx):
-	 for x in client.voice_clients:
-	 	if(x.server == ctx.message.server):
-	 		return await x.disconnect()
+    for x in client.voice_clients:
+        if(x.server == ctx.message.server):
+            return await x.disconnect()
 
 #thanks to mehodin for helping me with this, im retarded af.
 @client.command(pass_context=True)
 async def kys(ctx):
 	options=["¯\_(ತ益ತ)_/¯", "(ง  ᴥ  )ง", "¯\_(͡° ͜ʖ ͡°)_/¯"]
 	await client.say(choice(options))
-	
+
 @client.command(pass_context = True)
 async def ban(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.administrator:
@@ -64,15 +69,16 @@ async def ban(ctx, *, member : discord.Member = None):
         await client.ban(member)
     except Exception as e:
         if 'Privilege is too low' in str(e):
-            return await client.say(":( Privilege too low!")
+            return await client.say(":( You can't ban that Person!")
  
     embed = discord.Embed(description = "**%s** has been banned!"%member.name, color = 0xFF0000)
     return await client.say(embed = embed)
+
 @client.command(pass_context = True)
 async def getbans(ctx):
     x = await client.get_bans(ctx.message.server)
     x = '\n'.join([y.name for y in x])
-    embed = discord.Embed(title = "List of Banned Members", description = x, color = 0xFFFFF)
+    embed = discord.Embed(title = "Banned Members: ", description = x, color = 0xFFFFF)
     return await client.say(embed = embed)
 
 @client.command(pass_context=True)       
@@ -88,8 +94,8 @@ async def hvh(ctx):
     await client.say("```connect 172.93.100.154:27363;password Warlauke```")
 
 @client.command(pass_context=True)
-async def music(ctx):
-    await client.say("http://snipee.bplaced.net/music.mp3")
-
+async def yt(ctx):
+    embed = discord.Embed(title = "My youtube channel: https://www.youtube.com/channel/UC61AWVgbW8H4a7OD6qt7rtg/ ", color = 0xFFFFF)
+    return await client.say(embed = embed)
 
 client.run("123456789") # this isn't a real id
