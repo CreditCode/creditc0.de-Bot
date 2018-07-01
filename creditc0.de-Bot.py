@@ -81,5 +81,13 @@ async def clear(ctx, number):
         mgs.append(x)
     await client.delete_messages(mgs)
 
+@client.command(pass_context=True)
+async def hvh(ctx):
+    await client.say("```connect 172.93.100.154:27363;password Warlauke```")
+
+@client.command(pass_context=True)
+async def music(ctx):
+    await client.say("http://snipee.bplaced.net/music.mp3")
+
 
 client.run("123456789") # this isn't a real id
