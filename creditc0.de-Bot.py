@@ -13,6 +13,9 @@ Client = discord.Client()
 bot_prefix="."
 client = commands.Bot(command_prefix=bot_prefix)
 
+chat_filter = ["NIGGER", "SKID", "PENIS"]
+bypass_list = []
+
 @client.event
 async def on_ready():
 	print("Logged in as")
@@ -21,6 +24,18 @@ async def on_ready():
 	print('---------------------------------------')
 	print("Created by creditc0.de with 💙  and the \ndiscord.py API!")
 	await client.change_presence(game=discord.Game(name='created by creditc0.de'))
+
+@client.event
+async def on_message(message):
+    contents = message.content.split("  ") #contents is a list type
+    for word in contents:
+        if word.upper() in chat_filter:
+            if not message.author.id in bypass_list:
+                try:
+                    await client.delete_message(message)
+                    await client.send_message(message.channel, "**Hey!** Stop trashtalking!")
+                except discord.errors.NotFound:
+                    return
 
 @client.command(pass_context=True)
 async def src(ctx):
@@ -97,5 +112,14 @@ async def hvh(ctx):
 async def yt(ctx):
     embed = discord.Embed(title = "My youtube channel: https://www.youtube.com/channel/UC61AWVgbW8H4a7OD6qt7rtg/ ", color = 0xFFFFF)
     return await client.say(embed = embed)
+
+@client.command(pass_context=True)
+async def coder(ctx):
+    embed = discord.Embed(title = "How to get the coder rank:", description = "I need a project from you to proof that you can program.", color = 0xFFFFF)
+    return await client.say(embed = embed)
+
+@client.command(pass_context=True)
+async def game(ctx):
+    await client.say("Here we go.")
 
 client.run("123456789") # this isn't a real id
