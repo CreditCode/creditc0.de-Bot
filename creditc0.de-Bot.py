@@ -25,18 +25,6 @@ async def on_ready():
 	print("Created by creditc0.de with 💙  and the \ndiscord.py API!")
 	await client.change_presence(game=discord.Game(name='created by creditc0.de'))
 
-@client.event
-async def on_message(message):
-    contents = message.content.split("  ") #contents is a list type
-    for word in contents:
-        if word.upper() in chat_filter:
-            if not message.author.id in bypass_list:
-                try:
-                    await client.delete_message(message)
-                    await client.send_message(message.channel, "**Hey!** Stop trashtalking!")
-                except discord.errors.NotFound:
-                    return
-
 @client.command(pass_context=True)
 async def src(ctx):
     embed = discord.Embed(title = "Get the source here: \n http://github.com/CreditCode ", color = 0xFFFFF)
