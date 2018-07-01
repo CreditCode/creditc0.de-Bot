@@ -6,5 +6,20 @@ Invite it to your discord:
 
 https://discordapp.com/api/oauth2/authorize?client_id=461969238605692931&permissions=8&scope=bot
 
+Features:
+-   src        
+-  contact    
+-  memes      
+-  connect    
+-  disconnect 
+-  kys        
+-  ban        
+-  getbans    
+-  clear      
+-  hvh        
+-  yt         
+-  coder      
+-  game (this isn't working)  
+
 # Have a nice day!
 
