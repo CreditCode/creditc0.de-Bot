@@ -58,7 +58,7 @@ async def disconnect(ctx):
 #thanks to mehodin for helping me with this, im retarded af.
 @client.command(pass_context=True)
 async def kys(ctx):
-	options=["¯\_(ತ益ತ)_/¯", "(ง  ᴥ  )ง", "¯\_(͡° ͜ʖ ͡°)_/¯"]
+	options=["¯\_(ತ益ತ)_/¯", "(ง  ᴥ  )ง", "¯\_(͡° ͜ʖ ͡°)_/¯", "/tableflip"]
 	await client.say(choice(options))
 
 @client.command(pass_context = True)
